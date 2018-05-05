@@ -5,7 +5,8 @@ const restaurantSchema = new mongoose.Schema({
   id: Number,
   name: String,
   reviews: [{
-    user_id: {
+    user: {
+      user_id: Number,
       picture: String,
       name: String,
       friends: Number,
@@ -14,9 +15,15 @@ const restaurantSchema = new mongoose.Schema({
     stars: Number,
     date: Date,
     text: String,
-    cool_votes: Number,
-    funny_votes: String,
-    useful_votes: String,
+    cool_votes: [{
+      user_id: Number,
+    }],
+    funny_votes: [{
+      user_id: Number,
+    }],
+    useful_votes: [{
+      user_id: Number,
+    }],
   }],
 });
 

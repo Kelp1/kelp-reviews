@@ -3,7 +3,6 @@ const db = require('./pgconnection.js');
 const fs = require('fs');
 const moment = require('moment');
 
-console.log(faker.image.food());
 // const sql = fs.readFileSync(__dirname + '/schema.sql', 'utf8').toString();
 
 // db.query(sql)

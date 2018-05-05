@@ -3,20 +3,40 @@ const db = require('./connection.js');
 const Restaurant = require('./models.js').Restaurant;
 const fs = require('fs');
 
-const votes = [-2, -1, 0, 1, 2, 3, 4];
-
 function createReviewArray() {
   const result = [];
-  const amount = Math.floor(Math.random() * 22);
+  const amount = Math.floor(Math.random() * 21);
   for (var i = 0; i < amount; i++) {
     result.push(createReview());
   }
   return result;
 }
 
+function createVoteArray() {
+  const result = [];
+  const weighting = Math.floor(Math.random() * 10);
+  if (weighting < 8) {
+    const amount = Math.floor(Math.random() * 10);
+  } else if (weighting === 8) {
+    const amount = Math.floor(Math.random() * 50);
+  } else if (weighting > 8) {
+    const amount = Math.floor(Math.random() * 100);
+  }
+  for (var i = 0; i < amount; i++) {
+    result.push(createVote());
+  }
+  return result;
+}
+
+function createVote() {
+  return {
+    user_id: Math.floor(Math.random() * 10000000);
+  }
+}
+
 function createReview() {
   return {
-    user_id: {
+    user: {
       name: faker.name.firstName(),
       picture: faker.internet.avatar(),
       friends: Math.floor(Math.random() * 500),
@@ -25,10 +45,10 @@ function createReview() {
     stars: (1 + Math.floor(Math.random() * 5)),
     date: faker.date.past(),
     text: faker.lorem.sentence(),
-    cool_votes: Math.floor(Math.random() * votes.length),
-    funny_votes: Math.floor(Math.random() * votes.length),
-    cool_votes: Math.floor(Math.random() * votes.length),
-  };
+    cool_votes: createVoteArray(),
+    funny_votes: createVoteArray(),
+    useful_votes: createVoteArray(),
+  }
 }
 
 function createRestaurant(i, k) {
