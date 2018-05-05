@@ -15,12 +15,13 @@ function createReviewArray() {
 function createVoteArray() {
   const result = [];
   const weighting = Math.floor(Math.random() * 10);
+  let amount;
   if (weighting < 8) {
-    const amount = Math.floor(Math.random() * 10);
+    amount = Math.floor(Math.random() * 10);
   } else if (weighting === 8) {
-    const amount = Math.floor(Math.random() * 50);
+    amount = Math.floor(Math.random() * 50);
   } else if (weighting > 8) {
-    const amount = Math.floor(Math.random() * 100);
+    amount = Math.floor(Math.random() * 100);
   }
   for (var i = 0; i < amount; i++) {
     result.push(createVote());
@@ -30,7 +31,7 @@ function createVoteArray() {
 
 function createVote() {
   return {
-    user_id: Math.floor(Math.random() * 10000000);
+    user_id: Math.floor(Math.random() * 10000000),
   }
 }
 
