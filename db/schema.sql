@@ -26,7 +26,7 @@ CREATE TABLE reviews (
   restaurant_id INT,
   user_id INT,
   stars INT,
-  date VARCHAR,
+  date TIMESTAMP WITH TIME ZONE,
   text VARCHAR,
   cool_votes INT,
   funny_votes VARCHAR,
