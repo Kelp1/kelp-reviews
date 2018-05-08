@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const db = require('../db/index.js');
+const db = require('../db/connectionSDC.js');
 const path = require('path');
 const redisClient = require('redis').createClient;
 const responseTime = require('response-time');
+const morgan = require('morgan');
 
 // const redis = redisClient('redis://cache:6379');
 const redis = redisClient(6379, 'localhost');
@@ -13,6 +14,7 @@ const app = express();
 
 const jsonParser = bodyParser.json();
 
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/../public')));
 
 app.use(responseTime());
