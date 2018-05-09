@@ -166,7 +166,7 @@ class VotePanel extends React.Component {
       url: `http://18.188.254.251:80/api/review/votes/${reviewId}/${whichButton}/${direction}/${this.state.UserID}`,
       error: (err) => {console.log(err)},
       success: (data) => {console.log(data)},
-      type: 'GET',
+      type: 'PUT',
     });
   }
 
