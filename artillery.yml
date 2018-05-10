@@ -1,0 +1,15 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 120
+      arrivalRate: 10
+  variables:
+    id:
+      - 1
+  # processor: "./artilleryScripts.js"
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "api/review/{{ $randomNumber(1,9999999) }}/1/0"
+      count: 50

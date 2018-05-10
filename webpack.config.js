@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   context: path.join(__dirname, '/client'),
-  entry: './index.jsx',
+  entry: './app-client.js',
   module: {
     rules: [
       {
