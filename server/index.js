@@ -34,7 +34,7 @@ if (cluster.isMaster) {
   
   const app = express();
   expstate.extend(app);
-  app.set("state namespace", "MyApp");
+  app.set("state namespace", "Reviews");
   if (app.get('env') !== 'production') {
     console.log('node believes we are not in production mode');
     app.use(morgan('dev'));
@@ -46,21 +46,27 @@ if (cluster.isMaster) {
   
   app.use(bodyParser.json());
   // app.use(express.static(path.join(__dirname, '/../public')));
-  app.get('/', cors(), (rew, res) => {
+  app.get('/', cors(), (req, res) => {
     const initialState = {
       isLoaded: false,
     };
-    const appString = ReactDOMServer.renderToString(
-      React.createElement(Reviews));
-    res.expose(initialState, "MyApp.initialState");
+    const appString = ReactDOMServer.renderToString(React.createElement(Reviews));
+    
+    res.expose(initialState, "Reviews.initialState");
 
-    res.render("home", {
+    res.render("Reviews.handlebars", {
       title: "Server Rendered React",
       appString: appString,
-      initalState: initialState,
-    });
+      initalState: initialState },
+      function(err, html) {
+        console.log(err);
+        console.log(html);
+        res.send(html);
+      }
+    );
   });
   
+  app.use(express.static(path.join(__dirname, '/../public')));
 
   app.get('/api/review/votes/:reviewid/:button/:direction/:userID', cors(), (req, res) => {
     db.update(req.params.reviewid, req.params.button, req.params.direction, req.params.userID, (err, review) => {
