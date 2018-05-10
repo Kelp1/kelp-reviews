@@ -16,6 +16,7 @@ module.exports = {
       },
     ],
   },
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'app.js',
