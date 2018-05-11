@@ -45,26 +45,26 @@ if (cluster.isMaster) {
   app.set('view engine', 'handlebars');
   
   app.use(bodyParser.json());
-  // app.use(express.static(path.join(__dirname, '/../public')));
-  app.get('/', cors(), (req, res) => {
-    const initialState = {
-      isLoaded: false,
-    };
-    const appString = ReactDOMServer.renderToString(React.createElement(Reviews));
+  app.use(express.static(path.join(__dirname, '/../public')));
+  // app.get('/', cors(), (req, res) => {
+  //   const initialState = {
+  //     isLoaded: false,
+  //   };
+  //   const appString = ReactDOMServer.renderToString(React.createElement(Reviews));
     
-    res.expose(initialState, "Reviews.initialState");
+  //   res.expose(initialState, "main.initialState");
 
-    res.render("Reviews.handlebars", {
-      title: "Server Rendered React",
-      appString: appString,
-      initalState: initialState },
-      function(err, html) {
-        console.log(err);
-        console.log(html);
-        res.send(html);
-      }
-    );
-  });
+  //   res.render("Reviews.handlebars", {
+  //     title: "Server Rendered React",
+  //     appString: appString,
+  //     initalState: initialState },
+  //     function(err, html) {
+  //       console.log(err);
+  //       console.log(html);
+  //       res.send(html);
+  //     }
+  //   );
+  // });
   
   app.use(express.static(path.join(__dirname, '/../public')));
 

@@ -1,9 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = {
+const common = {
   context: path.join(__dirname, '/client'),
-  entry: './app-client.js',
   module: {
     rules: [
       {
@@ -16,8 +15,25 @@ module.exports = {
       },
     ],
   },
+};
+
+const client = {
+  entry: './client.js',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'app.js',
-  },
-};
+  }
+}
+
+const server = {
+  entry: './server.js',
+  output: {
+    path: path.join(__dirname, '/public'),
+    filename: 'app-server.js',
+  }
+}
+
+module.exports = [
+  Object.assign({}, common, client),
+  Object.assign({}, common, server),
+]
