@@ -2,6 +2,7 @@ const faker = require('faker');
 const db = require('./connection.js');
 const Restaurant = require('./models.js').Restaurant;
 const fs = require('fs');
+const mongoose = require('mongoose');
 
 function createReviewArray() {
   const result = [];
@@ -61,14 +62,14 @@ function createRestaurant(i, k) {
 }
 
 function seeder() {
-  for (let i = 0; i < 250; i++) {
+  for (let i = 0; i < 1; i++) {
     const restaurants = [];
-    for (let k = 0; k < 10000; k++) {
+    for (let k = 0; k < 50; k++) {
       const restaurant = createRestaurant(i, k);
-      restaurants.push(JSON.stringify(restaurant));
+      restaurants.push(restaurant);
     }
-    fs.appendFileSync('./trialDataSplit.json', restaurants.join('\n') + '\n');
-    console.log(`batch ${i} inserted`);
+    Restaurant.insertMany(restaurants)
+      .then(() => mongoose.disconnect());
   }
 }
 
