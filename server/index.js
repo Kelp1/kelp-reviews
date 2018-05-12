@@ -8,6 +8,15 @@ const redisClient = require('redis').createClient;
 const responseTime = require('response-time');
 const morgan = require('morgan');
 const cluster = require('cluster');
+const expstate = require('express-state');
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+require("babel-register")({
+    presets: ["react"]
+});
+const Reviews = require('../babel_views/index.jsx').default;
+const handlebars = require('express-handlebars');
+
 
 if (cluster.isMaster) {
 
@@ -24,15 +33,41 @@ if (cluster.isMaster) {
   const redis = redisClient(6379, 'localhost');
   
   const app = express();
+  expstate.extend(app);
+  app.set("state namespace", "Reviews");
   if (app.get('env') !== 'production') {
     console.log('node believes we are not in production mode');
     app.use(morgan('dev'));
     app.use(responseTime());
   }
+
+  app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+  app.set('view engine', 'handlebars');
   
   app.use(bodyParser.json());
-  app.use(express.static(path.join(__dirname, '/../public')));
+  // app.use(express.static(path.join(__dirname, '/../public')));
+  app.get('/', cors(), (req, res) => {
+    const initialState = {
+      isLoaded: false,
+    };
+    const appString = ReactDOMServer.renderToString(React.createElement(Reviews));
+    
+    res.expose(initialState, "main.initialState");
+
+    res.render("Reviews.handlebars", {
+      title: "Server Rendered React",
+      appString: appString,
+      initalState: initialState },
+      function(err, html) {
+        console.log(err);
+        console.log(html);
+        res.send(html);
+      }
+    );
+  });
   
+  app.use(express.static(path.join(__dirname, '/../public')));
+
   app.get('/api/review/votes/:reviewid/:button/:direction/:userID', cors(), (req, res) => {
     db.update(req.params.reviewid, req.params.button, req.params.direction, req.params.userID, (err, review) => {
       if (err) {
