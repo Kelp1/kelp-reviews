@@ -68,6 +68,7 @@ function seeder() {
       const restaurant = createRestaurant(i, k);
       restaurants.push(restaurant);
     }
+    console.log(restaurants);
     Restaurant.insertMany(restaurants)
       .then(() => mongoose.disconnect());
   }
