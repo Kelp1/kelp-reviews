@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Restaurant = require('./models.js').Restaurant;
-mongoose.connect('mongodb://kelp:kelp@ds119660.mlab.com:19660/kelp-reviews');
+mongoose.connect('mongodb://172.17.0.4/kelp-reviews');
 
 const retrieve = (redis, id, sort, page, keyword, callback) => {
 
