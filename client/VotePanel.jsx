@@ -163,7 +163,7 @@ class VotePanel extends React.Component {
     }
 
     $.ajax({
-      url: `http://ec2-34-219-67-73.us-west-2.compute.amazonaws.com/api/review/votes/${reviewId}/${whichButton}/${direction}/${this.state.UserID}`,
+      url: `http://ec2-34-219-64-53.us-west-2.compute.amazonaws.com/api/review/votes/${reviewId}/${whichButton}/${direction}/${this.state.UserID}`,
       error: (err) => {console.log(err)},
       success: (data) => {console.log(data)},
       type: 'PUT',
