@@ -58,8 +58,6 @@ if (cluster.isMaster) {
       appString: appString,
       initalState: initialState },
       function(err, html) {
-        console.log(err);
-        console.log(html);
         res.send(html);
       }
     );
