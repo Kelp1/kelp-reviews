@@ -43,7 +43,6 @@ if (cluster.isMaster) {
 
   app.engine('handlebars', handlebars({defaultLayout: 'main'}));
   app.set('view engine', 'handlebars');
-  
   app.use(bodyParser.json());
   // app.use(express.static(path.join(__dirname, '/../public')));
   app.get('/', cors(), (req, res) => {
