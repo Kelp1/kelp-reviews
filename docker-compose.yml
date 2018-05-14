@@ -1,13 +1,13 @@
-version: '2'
+version: '3'
 
 services:
   welp-reviews:
-    build: gregoryew/welp-reviews:latest
+    build: samgetlan/kelp-reviews:latest
     depends_on:
       - 'database'
       - 'cache'
     ports:
-      - '3004:3000'
+      - '3003:3003'
 
   database:
     image: mongo:latest
