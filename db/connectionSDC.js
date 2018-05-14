@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Restaurant = require('./models.js').Restaurant;
-mongoose.connect('mongodb://localhost/welpReviews');
+mongoose.connect('mongodb://kelp:kelp@ds119660.mlab.com:19660/kelp-reviews');
 
 const retrieve = (redis, id, sort, page, keyword, callback) => {
 
@@ -41,9 +41,11 @@ const retrieve = (redis, id, sort, page, keyword, callback) => {
               for (var f = 0; f < relavantReviews[i].user.friends; f++) {
                 friendsList.push(0);
               }
+              console.log(relavantReviews[i].date);
               restaurantReviews.push({
                 text: [relavantReviews[i].text],
                 stars: `https://s3.amazonaws.com/hrsf93welpusers/${relavantReviews[i].stars}.png`,
+                date: relavantReviews[i].date,
                 numStars: relavantReviews[i].stars,
                 business_id: {
                   name: data[0].name,
