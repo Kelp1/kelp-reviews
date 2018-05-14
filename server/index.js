@@ -30,7 +30,7 @@ if (cluster.isMaster) {
 
 } else {
   // const redis = redisClient('redis://cache:6379');
-  const redis = redisClient(6379, '172.17.0.3gs');
+  const redis = redisClient(6379, '172.17.0.3');
   
   const app = express();
   expstate.extend(app);
