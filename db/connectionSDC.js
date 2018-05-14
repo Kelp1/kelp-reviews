@@ -89,7 +89,7 @@ const retrieve = (redis, id, sort, page, keyword, callback) => {
             }
             
             if (sort === '1') {
-              data[0].reviews.sort((a, b) => {
+              restaurantReviews.sort((a, b) => {
                 return new Date(b.date) - new Date(a.date);
               });
             } else if (sort === '2') {
