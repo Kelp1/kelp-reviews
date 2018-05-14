@@ -33,8 +33,11 @@ const retrieve = (redis, id, sort, page, keyword, callback) => {
             callback(err2, null);
           } else {
             const restaurantReviews = []
-  
-            const relavantReviews = data[0].reviews.filter(review => review.text.includes(keyword));
+            if (data[0]) {
+              var relavantReviews = data[0].reviews.filter(review => review.text.includes(keyword));
+            } else {
+              var relavantReviews = [];
+            }
 
             for (let i = 0; i < relavantReviews.length; i++) {
               const friendsList = [];
