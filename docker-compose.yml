@@ -1,16 +1,26 @@
 version: '3'
 
 services:
-  welp-reviews:
-    build: samgetlan/kelp-reviews:latest
+  kelp-reviews:
+    image: samgetlan/kelp-reviews:latest
     depends_on:
-      - 'database'
+      - 'mongodb'
+      - 'mongo-seed-small'
       - 'cache'
     ports:
       - '3003:3003'
 
-  database:
+  mongodb:
     image: mongo:latest
+    volumes:
+      - ./home/ec2-user/data:/data/db
+    ports: 
+      - "27017:27017"
+  
+  mongo-seed:
+    image: samgetlan/mongo-seed-small:latest
+    links:
+      - mongodb
 
   cache:
     image: redis:latest

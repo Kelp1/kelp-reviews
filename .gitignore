@@ -9,4 +9,6 @@ trialDataSplit4.json
 trialRestaurantsPostgresData
 trialReviewsPostgresData
 trialUsersPostgresData
+mongo-seed/trialDataForDeployment.json
+mongo-seed/trialDataForDeploymentSmall.json
 newRelicKey.js

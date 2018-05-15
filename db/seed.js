@@ -64,13 +64,12 @@ function createRestaurant(i, k) {
 function seeder() {
   for (let i = 0; i < 1; i++) {
     const restaurants = [];
-    for (let k = 0; k < 50; k++) {
+    for (let k = 0; k < 10000; k++) {
       const restaurant = createRestaurant(i, k);
-      restaurants.push(restaurant);
+      restaurants.push(JSON.stringify(restaurant));
     }
-    console.log(restaurants);
-    Restaurant.insertMany(restaurants)
-      .then(() => mongoose.disconnect());
+    fs.appendFileSync('./trialDataForDeploymentSmall.json', restaurants.join('\n') + '\n');
+    console.log(`batch ${i} inserted`);
   }
 }
 
