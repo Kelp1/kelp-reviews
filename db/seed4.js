@@ -67,7 +67,7 @@ function seeder() {
       const restaurant = createRestaurant(i, k);
       restaurants.push(JSON.stringify(restaurant));
     }
-    fs.appendFileSync('./trialDataSplit4.json', restaurants.join('\n') + '\n');
+    fs.appendFileSync('./dummyDataForShard4.json', restaurants.join('\n') + '\n');
     console.log(`batch ${i} inserted`);
   }
 }

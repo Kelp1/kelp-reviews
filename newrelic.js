@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['Kelp-Reviews'],
+  app_name: ['Kelp-Reviews-Deployed'],
   /**
    * Your New Relic license key.
    */

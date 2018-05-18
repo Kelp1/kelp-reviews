@@ -12,3 +12,6 @@ trialUsersPostgresData
 mongo-seed/trialDataForDeployment.json
 mongo-seed/trialDataForDeploymentSmall.json
 newRelicKey.js
+dummyDataForAWS.json
+dummyDataForAWS2.json
+dummyDataForAWS3.json

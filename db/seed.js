@@ -1,8 +1,26 @@
 const faker = require('faker');
-const db = require('./connection.js');
 const Restaurant = require('./models.js').Restaurant;
 const fs = require('fs');
+// const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
+const mongoUrl = 'mongodb://52.38.123.246/kelpReviews';
+mongoose.connect(mongoUrl)
+  // .then(() => console.log('inside then'))
+  // .catch(() => console.log('inside catch'))
+// MongoClient.connect(mongoUrl, function(err, client) {
+//   if (err) {
+//     console.log('err', err);
+//   } else {
+//     console.log('successfully connected to server');
+//   }
+// });
+
+mongoose.connection.once('open', () => {
+  console.log('Connection has been made, now make fireworks...');
+  seeder();
+}).on('error', (error) => {
+  console.log('Connection error:', error);
+});
 
 function createReviewArray() {
   const result = [];
@@ -61,16 +79,16 @@ function createRestaurant(i, k) {
   }
 }
 
-function seeder() {
-  for (let i = 0; i < 1; i++) {
+async function seeder() {
+  for (let i = 0; i < 334; i++) {
     const restaurants = [];
     for (let k = 0; k < 10000; k++) {
       const restaurant = createRestaurant(i, k);
       restaurants.push(JSON.stringify(restaurant));
     }
-    fs.appendFileSync('./trialDataForDeploymentSmall.json', restaurants.join('\n') + '\n');
+    fs.appendFileSync('./dummyDataForAWS.json', restaurants.join('\n') + '\n');
     console.log(`batch ${i} inserted`);
   }
 }
 
-seeder();
+// seeder();
