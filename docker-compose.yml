@@ -10,17 +10,6 @@ services:
     ports:
       - '80:3003'
 
-  mongodb:
-    image: mongo:latest
-    volumes:
-      - ./home/ec2-user/data:/data/db
-    ports: 
-      - "27017:27017"
-  
-  mongo-seed:
-    image: samgetlan/mongo-seed-small:latest
-    links:
-      - mongodb
 
   cache:
     image: redis:latest

@@ -2,3 +2,6 @@
 node_modules
 .DS_Store
 mongo-seed
+dummyDataForAWS.json
+dummyDataForAWS2.json
+dummyDataForAWS3.json
