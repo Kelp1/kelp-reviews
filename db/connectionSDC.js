@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const restaurantSchema = require('./models.js').restaurantSchema;
 const connA = mongoose.createConnection('mongodb://34.210.73.77/kelpReviews');
-const connB = mongoose.createConnection('mongodb://34.214.77.149/kelpReviews');
+const connB = mongoose.createConnection('mongodb://34.212.144.31/kelpReviews');
 const connC = mongoose.createConnection('mongodb://52.38.123.246/kelpReviews');
 const Restaurant1 = connA.model('Restaurant', restaurantSchema);
 const Restaurant2 = connB.model('Restaurant', restaurantSchema);
