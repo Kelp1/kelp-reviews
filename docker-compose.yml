@@ -4,8 +4,6 @@ services:
   kelp-reviews:
     image: samgetlan/kelp-reviews:latest
     depends_on:
-      - 'mongodb'
-      - 'mongo-seed-small'
       - 'cache'
     ports:
       - '80:3003'
