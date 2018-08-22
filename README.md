@@ -5,9 +5,9 @@
 ## Related Projects
 
   - https://github.com/Kelp1/kelp-summary
-  - https://github.com/teamName/kelp-photos
-  - https://github.com/teamName/kelp-details
-  - https://github.com/teamName/kelp-proxy
+  - https://github.com/Kelp1/kelp-photos
+  - https://github.com/Kelp1/kelp-details
+  - https://github.com/Kelp1/kelp-proxy
 
 ## Built With
 
