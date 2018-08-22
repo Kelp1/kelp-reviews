@@ -1,39 +1,19 @@
-# Project Name
+# Kelp: Restaurant Reviews Application
 
-> Project description
+> Scaled backend of the reviews microservice for a restaurant reviews application. Through modifying the database schema, adding a Redis caching layer, horizontally scaling a dockerized container of the server, and sharding a MongoDB, this microservice was able to increase throughput from 500 RPS to 6200 RPS
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Kelp1/kelp-summary
+  - https://github.com/teamName/kelp-photos
+  - https://github.com/teamName/kelp-details
+  - https://github.com/teamName/kelp-proxy
 
-## Table of Contents
+## Built With
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
-
+* [Node](https://nodejs.org/en/docs/) - JavaScript runtime
+* [Express](https://expressjs.com) - Web framework for Node.js
+* [MongoDB](https://www.mongodb.com) - noSQL database
+* [Mongoose](http://www.mongoosejs.com) - MongoDB ORM for node.js
+* [Redis](https://redis.io/) - in-memory data structure used as a caching layer 
+* [Docker](https://www.docker.com/) - Container Platform
